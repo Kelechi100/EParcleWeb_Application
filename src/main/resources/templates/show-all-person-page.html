@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Customers (Persons)</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid black;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body style="background-color: lightblue">
+    <h2>All Customers (Persons)</h2>
+    <table>
+        <thead>
+            <tr>
+				<th>ID</th>
+                <th>Person ID</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="customer : ${mypackage}">
+				<td th:text="${customer.idp}"></td>
+                <td th:text="${customer.personId}"></td>
+                <td th:text="${customer.phoneNO}"></td>
+                <td th:text="${customer.address}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

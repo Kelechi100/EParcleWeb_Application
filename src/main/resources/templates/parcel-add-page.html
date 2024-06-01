@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Parcel</title>
+</head>
+<body style="background-color: lightpink">
+    <h2>Add Parcel</h2>
+    <form th:action="@{/parcel/add}" th:object="${parcel}" method="post">
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" name="customerId" required>
+        <br>
+        <label for="driverId">Driver ID:</label>
+        <input type="text" id="driverId" name="driverId" required>
+		<!-- Additional fields for parcel information -->
+		<label for="isFragile">Is Fragile:</label>
+		<input type="checkbox" id="isFragile" name="isFragile">
+		<br>
+		<label for="price">Price:</label>
+		<input type="text" id="price" name="price" required>
+		<br>
+		<br>
+		<label for="plannedDelivery">Planned Delivery:</label>
+		<input type="datetime-local" id="plannedDelivery" name="plannedDelivery" required>
+		<br>
+		<label for="orderCreated">Order Created:</label>
+		<input type="datetime-local" id="orderCreated" name="orderCreated" required>
+		<br>
+        
+        <input  style="background-color: blue" type="submit" value="Submit">
+    </form>
+
+    <div th:if="${errorMessage}">
+        <p th:text="${errorMessage}"></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Parcel Details</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color:white;
+        }
+    </style>
+</head>
+<body style="background-color: lightpink">
+    <h1>Parcel Details</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Is Fragile</th>
+            <th>Order Created</th>
+            <th>Planned Delivery</th>
+            <th>Price</th>
+            <th>Parcel Size</th>
+            <th>Driver</th>
+            <th>Receiver Person</th>
+        </tr>
+        <tr th:if="${parcel != null}">
+            <td th:text="${parcel.idpa}"></td>
+            <td th:text="${parcel.isFragile}"></td>
+            <td th:text="${#dates.format(parcel.orderCreated, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${#dates.format(parcel.plannedDelivery, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${parcel.price}"></td>
+            <td th:text="${parcel.parcelSize}"></td>
+            <td th:if="${parcel.driver != null}">
+                <span th:text="${parcel.driver.name + ' ' + parcel.driver.surname}"></span><br/>
+                <span th:text="${'Person Code: ' + parcel.driver.personCode}"></span><br/>
+                <span th:text="${'Experience: ' + parcel.driver.experienceInYears + ' years'}"></span><br/>
+                <span th:text="${'Licence No: ' + parcel.driver.licenceNo}"></span>
+            </td>
+            <td th:if="${parcel.receiverPerson != null}">
+                <span th:text="${parcel.receiverPerson.personCode}"></span><br/>
+                <span th:text="${'Address: ' + parcel.receiverPerson.address.streetName + ' ' + parcel.receiverPerson.address.houseNo + ', ' + parcel.receiverPerson.address.city}"></span><br/>
+                <span th:text="${'Phone No: ' + parcel.receiverPerson.phoneNO}"></span>
+            </td>
+        </tr>
+        <tr th:if="${parcel == null}">
+            <td colspan="8">Parcel details not available.</td>
+        </tr>
+    </table>
+</body>
+</html>

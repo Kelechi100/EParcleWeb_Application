@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Customer (Person)</title>
+</head>
+<body style="background-color: papayawhip"  >
+    <h2>Create Customer (Person)</h2>
+    <form th:action="@{/customer/person/create}" th:object="${person}" method="post">
+        <label for="personId">Person ID:</label>
+        <input type="text" id="personId" name="personId" required>
+        <br>
+        <label for="phoneNO">Phone No:</label>
+        <input type="text" id="phoneNO" name="phoneNO" required>
+        <br>
+        
+        <label for="streetName">Street Name:</label>
+        <input type="text" id="streetName" name="address.streetName" required>
+        <br>
+        <label for="houseNo">House No:</label>
+        <input type="text" id="houseNo" name="address.houseNo" required>
+        <br>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="address.city" required>
+        <br>
+        
+        <input style="background-color: green;" type="submit" value="Submit">
+    </form>
+    
+    <div th:if="${errorMessage}">
+        <p th:text="${errorMessage}"></p>
+    </div>
+</bodystyle="background-color: papayawhip"  >
+</html>

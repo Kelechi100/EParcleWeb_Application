@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Parcels by Driver ID</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color:white;
+        }
+    </style>
+</head>
+<body style="background-color: lightpink">
+    <h1>Parcels for Driver ID</h1>
+    <div th:if="${mypackage != null}">
+        <div th:if="${#lists.isEmpty(mypackage)}">
+            <p>No parcels found for this driver.</p>
+        </div>
+        <div th:unless="${#lists.isEmpty(mypackage)}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Is Fragile</th>
+                        <th>Order Created</th>
+                        <th>Planned Delivery</th>
+                        <th>Price</th>
+                        <th>Size</th>
+                        <th>Receiver Company</th>
+                        <th>Driver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="parcel : ${mypackage}">
+                        <td th:text="${parcel.idpa}"></td>
+                        <td th:text="${parcel.isFragile}"></td>
+                        <td th:text="${parcel.orderCreated}"></td>
+                        <td th:text="${parcel.plannedDelivery}"></td>
+                        <td th:text="${parcel.price}"></td>
+                        <td th:text="${parcel.parcelSize}"></td>
+                        <td>
+                            <div>
+                                <p th:text="'Company: ' + ${parcel.receiverCompany.title}"></p>
+                                <p th:text="'Address: ' + ${parcel.receiverCompany.address.streetName} + ' ' + ${parcel.receiverCompany.address.houseNo} + ', ' + ${parcel.receiverCompany.address.city}"></p>
+                                <p th:text="'Company Code: ' + ${parcel.receiverCompany.companyCode}"></p>
+                                <p th:text="'Company Reg No: ' + ${parcel.receiverCompany.companyRegNo}"></p>
+                                <p th:text="'Phone No: ' + ${parcel.receiverCompany.phoneNo}"></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <p th:text="'Name: ' + ${parcel.driver.name} + ' ' + ${parcel.driver.surname}"></p>
+                                <p th:text="'Person Code: ' + ${parcel.driver.personCode}"></p>
+                                <p th:text="'Experience: ' + ${parcel.driver.experienceInYears} + ' years'"></p>
+                                <p th:text="'Licence No: ' + ${parcel.driver.licenceNo}"></p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div th:if="${mypackage == null}">
+        <p>Error: No data available.</p>
+    </div>
+</body>
+</html>

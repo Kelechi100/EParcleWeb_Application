@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Parcels</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid black;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body style="background-color: lightpink">
+    <h2>All Parcels</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Driver</th>
+                <th>Is Fragile</th>
+                <th>Price</th>
+                <th>Planned Delivery</th>
+                <th>Order Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through each parcel and populate the table rows -->
+            <tr th:each="parcel : ${mypackage}">
+                <td th:text="${parcel.idpa}"></td>
+                <td>
+                    <!-- Check if parcel is delivered to a person or company and display accordingly -->
+                    <span th:if="${parcel.receiverPerson != null}"
+                          th:text="${'Person: ' + parcel.receiverPerson.personCode}"></span>
+                    <span th:if="${parcel.receiverCompany != null}"
+                          th:text="${'Company: ' + parcel.receiverCompany.title}"></span>
+                </td>
+                <td th:text="${'Driver: ' + (parcel.driver?.name ?: '') + ' ' + (parcel.driver?.surname ?: '')}"></td>
+                <td th:text="${parcel.isFragile}"></td>
+                <td th:text="${parcel.price}"></td>
+                <td th:text="${#temporals.format(parcel.plannedDelivery, 'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${#temporals.format(parcel.orderCreated, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </tbody>
+    </table>
+</bodystyle="background-color: lightblue">
+</html>

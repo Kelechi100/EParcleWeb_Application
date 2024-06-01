@@ -1,0 +1,50 @@
+
+<hmtl xmlns:th="http://www.thymeleaf.org">
+
+	<body style="background-color: lightcoral">
+		
+		<p> Please insert Driver data: </p>
+		
+		<form th:action="@{/driver/crud/create}" th:object="${driver}" method="post" >
+			
+			<table>
+				<tr>
+					<td>name:</td>
+					<td> <input type="text" th:field="*{name}" /> </td>
+					<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"  > </td>
+				</tr>
+				
+				<tr>
+					<td>surname:</td>
+					<td> <input type="text" th:field="*{surname}" /> </td>
+					<td th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"  > </td>
+				</tr>
+				
+				<tr>
+					<td>personCode:</td>
+					<td> <input type="text" th:field="*{personCode}" /> </td>
+					<td th:if="${#fields.hasErrors('personCode')}" th:errors="*{personCode}"  > </td>
+				</tr>
+				
+				<tr>
+					<td>liceneceNo:</td>
+					<td> <input type="text" th:field="*{licenceNo}" /> </td>
+					<td th:if="${#fields.hasErrors('licenceNo')}" th:errors="*{licenceNo}"  > </td>
+				</tr>
+				
+				<tr>
+					<td>experienceInYears:</td>
+					<td> <input type="text" th:field="*{experienceInYears}" /> </td>
+					<td th:if="${#fields.hasErrors('experienceInYears')}" th:errors="*{experienceInYears}"  > </td>
+				</tr>
+				
+			</table>
+			<input  style="background-color: blue"type="submit" value="Save" >
+			
+		</form>
+		
+		
+	</body>
+	
+		
+</hmtl>

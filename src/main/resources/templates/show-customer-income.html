@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Income</title>
+</head>
+<body style="background-color: lightpink">
+    <h1>Customer Income</h1>
+    <div th:if="${errorMessage}">
+        <p th:text="${errorMessage}" style="color:red;"></p>
+    </div>
+    <p><strong>Income:</strong> <span th:text="${income}"></span></p>
+</body>
+</html>

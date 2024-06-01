@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Change Parcel Driver</title>
+</head>
+<body style="background-color: lightpink">
+    <h1>Change Driver for Parcel</h1>
+    <form th:action="@{/parcel/details/{parcelid}/{driverid}(parcelid=${parcelid}, driverid=${driverid})}" method="post">
+        <label for="parcelId">Parcel ID:</label>
+        <input type="text" id="parcelId" name="parcelId" th:value="${parcelid}" readonly/>
+        <label for="driverId">New Driver ID:</label>
+        <input type="text" id="driverId" name="driverId"/>
+        <button type="submit">Change Driver</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<hmtl xmlns:th="http://www.thymeleaf.org">
+
+	<body style="background-color: lightcoral">
+		<h2> All Drivers: </h2>
+		<table border="1">
+			
+			<tr>
+			    <th>Id</th>
+			    <th>Name</th>
+			    <th>Surname</th>
+				<th>PersonCode</th>
+				<th>LicenceNo</th>
+				<th>YearsOfExperience</th>
+			  </tr>
+			
+			<tr th:each="temp : ${mypackage} " >
+				<td  th:text="${temp.getIds()}"></td>
+				<td  th:text="${temp.getName()}"></td>
+				<td  th:text="${temp.getSurname()}"></td>
+				<td  th:text="${temp.getPersonCode()}"></td>
+				<td  th:text="${temp.getLicenceNo()}"></td>  
+				<td  th:text="${temp.getExperienceInYears()}"></td>
+			</tr>
+	
+		</table>
+	
+	</body>
+	
+		
+</hmtl>
